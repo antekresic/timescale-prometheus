@@ -687,12 +687,6 @@ func (q *pgxQuerier) Select(mint int64, maxt int64, sortSeries bool, hints *stor
 		return nil, nil, err
 	}
 
-	defer func() {
-		for _, r := range rows {
-			r.Close()
-		}
-	}()
-
 	return buildSeriesSet(rows, sortSeries)
 }
 

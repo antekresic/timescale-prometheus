@@ -8,13 +8,19 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/prometheus/prometheus/pkg/labels"
 	"github.com/prometheus/prometheus/prompb"
+	"github.com/prometheus/prometheus/storage"
 )
 
 type mockQuerier struct {
 	tts               []*prompb.TimeSeries
 	err               error
 	healthCheckCalled bool
+}
+
+func (m *mockQuerier) Select(mint int64, maxt int64, sortSeries bool, hints *storage.SelectHints, ms ...*labels.Matcher) (storage.SeriesSet, storage.Warnings, error) {
+	return nil, nil, nil
 }
 
 func (q *mockQuerier) Query(query *prompb.Query) ([]*prompb.TimeSeries, error) {
