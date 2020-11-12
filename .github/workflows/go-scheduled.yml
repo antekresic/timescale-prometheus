@@ -1,8 +1,8 @@
 name: Daily scheduled extended Go tests
 
 on:
-  schedule:
-    - cron: "6 0 * * *"
+  push:
+    branches: [ fix-extended-tests ]
 
 jobs:
 
